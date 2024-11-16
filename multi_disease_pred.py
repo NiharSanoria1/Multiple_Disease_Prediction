@@ -1,4 +1,4 @@
-
+import numpy as np
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -12,6 +12,8 @@ heart_disease_model = pickle.load(open('./notebook/models/heart_disease_model.sa
 
 parkinsons_model = pickle.load(open('./notebook/models/parkinson_model.sav', 'rb'))
 
+lung_cancer_model = pickle.load(open('./notebook/models/lung_cancer_model.sav','rb'))
+
 
 
 # sidebar for navigation
@@ -21,8 +23,9 @@ with st.sidebar:
                           
                           ['Diabetes Prediction',
                            'Heart Disease Prediction',
-                           'Parkinsons Prediction'],
-                          icons=['activity','heart','person'],
+                           'Parkinsons Prediction',
+                           'Lung Cancer'],
+                          icons=['activity','heart','person','lungs'],
                           default_index=0)
     
     
@@ -237,6 +240,79 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
+if (selected == 'Lung Cancer'):
+
+    st.title('Lung Cancer Prediction Using ML')
+
+    col1, col2, col3 = st.columns(3)  
+
+    
+        
+    with col1 :
+        Age = st.text_input('AGE')
+    
+    with col2:
+        Smoking = st.text_input('Smoking (YES=2/NO=1)')
+        
+    
+    with col3:
+        Yellow_Fingers = st.text_input('Yellow_Fingers (YES=2/NO=1)')
+       
+    with col1:
+        Anxiety = st.text_input('Anxiety (YES=2/NO=1)')
+        
+    with col2:
+        Peer_Pressure = st.text_input('Peer_Pressure (YES=2/NO=1)')
+        
+
+    with col3:
+        Chronic_Disease = st.text_input('Chronic_Disease (YES=2/NO=1)')
+        
+    with col1:
+        Fatigue = st.text_input('Fatigue (YES=2/NO=1)')
+        
+    with col2:
+        Allergy = st.text_input('Allergy (YES=2/NO=1)')
+        
+
+    with col3:
+        Wheezing = st.text_input('Wheezing (YES=2/NO=1)')
+        
+    with col1:
+        Alcohol = st.text_input('Alcohol (YES=2/NO=1)')
+        
+    with col2:
+        Couching = st.text_input('Couching (YES=2/NO=1)')
+       
+
+    with col3:
+        Shortness_of_Breath = st.text_input('Shortness_of_Breath (YES=2/NO=1)')
+        
+    with col1:
+        Swallowing_Difficulty = st.text_input('Swallowing_Difficulty (YES=2/NO=1)')
+        
+    with col2:
+        Chest_Pain = st.text_input('Chest_Pain (YES=2/NO=1)')
+    
+    #inputs = [ Age,Smoking,Yellow_Fingers,Anxiety,Peer_Pressure,Chronic_Disease,Fatigue,Allergy,Wheezing,Alcohol,Couching,Shortness_of_Breath,Swallowing_Difficulty,Chest_Pain]
+    #inputs = np.array([float(i) for i in inputs]).reshape(1, -1)
+
+    lung_cancer = ''
+    if st.button('Lung Cancer Prediction'):
+        inputs = [ Age,Smoking,Yellow_Fingers,Anxiety,Peer_Pressure,Chronic_Disease,Fatigue,Allergy,Wheezing,Alcohol,Couching,Shortness_of_Breath,Swallowing_Difficulty,Chest_Pain]
+        inputs = np.array([float(i) for i in inputs]).reshape(1, -1)
+        lung_cancer_prediction = lung_cancer_model.predict(inputs)
+        
+        if lung_cancer_prediction[0] == 0 :
+            lung_cancer = "The person is healthy"
+        else :
+            lung_cancer = "The person have lung cancer"
+
+    st.success(lung_cancer)
+
+
+
+    
 
 
 
