@@ -21,7 +21,7 @@ with st.sidebar:
     
     selected = option_menu('Multiple Disease Prediction System',
                           
-                          ['Diabetes Prediction',
+                          ['Diabetes Prediction (Women)',
                            'Heart Disease Prediction',
                            'Parkinsons Prediction',
                            'Lung Cancer'],
@@ -30,10 +30,10 @@ with st.sidebar:
     
     
 # Diabetes Prediction Page
-if (selected == 'Diabetes Prediction'):
+if (selected == 'Diabetes Prediction (Women)'):
     
     # page title
-    st.title('Diabetes Prediction using ML')
+    st.title('Diabetes Prediction (Women) using ML')
     
     
     # getting the input data from the user
@@ -73,9 +73,9 @@ if (selected == 'Diabetes Prediction'):
         diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
         
         if (diab_prediction[0] == 1):
-          diab_diagnosis = 'The person is diabetic'
+          diab_diagnosis = 'You are predicted to be diabetic , it is suggested that you get a checkup at a HOSPITAL.'
         else:
-          diab_diagnosis = 'The person is not diabetic'
+          diab_diagnosis = 'You are predicted not to be diabetic'
         
     st.success(diab_diagnosis)
 
@@ -141,9 +141,9 @@ if (selected == 'Heart Disease Prediction'):
         heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
         
         if (heart_prediction[0] == 1):
-          heart_diagnosis = 'The person is having heart disease'
+          heart_diagnosis = 'You are predicted to have heat disease , it is suggested that you get a checkup at a HOSPITAL.'
         else:
-          heart_diagnosis = 'The person does not have any heart disease'
+          heart_diagnosis = 'The person is predicted to not have any heart disease'
         
     st.success(heart_diagnosis)
         
@@ -234,9 +234,9 @@ if (selected == "Parkinsons Prediction"):
         parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ,DDP,Shimmer,Shimmer_dB,APQ3,APQ5,APQ,DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]])                          
         
         if (parkinsons_prediction[0] == 1):
-          parkinsons_diagnosis = "The person has Parkinson's disease"
+          parkinsons_diagnosis = "The person is predicted to have Parkinson's disease , you are suggested to get a checkup at a HOSPITAL"
         else:
-          parkinsons_diagnosis = "The person does not have Parkinson's disease"
+          parkinsons_diagnosis = "The person  notpredicted not to have Parkinson's disease"
         
     st.success(parkinsons_diagnosis)
 
@@ -304,9 +304,9 @@ if (selected == 'Lung Cancer'):
         lung_cancer_prediction = lung_cancer_model.predict(inputs)
         
         if lung_cancer_prediction[0] == 0 :
-            lung_cancer = "The person is healthy"
+            lung_cancer = "The person is predicted to be healthy"
         else :
-            lung_cancer = "The person have lung cancer"
+            lung_cancer = "The person is predicted to have a lung cancer , you are suggested to get a heath checkup at a HOSPITAL."
 
     st.success(lung_cancer)
 
