@@ -1,4 +1,4 @@
-## v-AI-dya - Diagnosis Website
+# v-AI-dya - Diagnosis Website
 
 This repository contains the code for the Diagnosis Website component of the VAIDIYA project. The diagnosis website allows users to input their medical test results and receive a potential diagnosis based on trained machine learning models.
 
@@ -21,16 +21,16 @@ NumPy: For numerical computations and data handling.
 
 ## Setup and Installation
 
-# Clone this repository:
+### Clone this repository:
 
 git clone https://github.com/your-repo/Multiple_Disease_Prediction.git  
 cd Multiple_Disease_Prediction
 
-# Install the required dependencies:
+### Install the required dependencies:
 
 pip install -r requirements.txt  
 
-# Run the Streamlit app:
+### Run the Streamlit app:
 
 streamlit run app.py  
 
